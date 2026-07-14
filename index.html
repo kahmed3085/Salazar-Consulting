@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salazar Consulting | Tender Dashboard</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="hero">
+<div class="hero-inner">
+<h1>SALAZAR CONSULTING</h1>
+<p class="subtitle">Live tender listings - auto-refreshed daily at 9:00 AM</p>
+</div>
+<div class="updated-pill" id="lastUpdated">Last updated: -</div>
+</header>
+
+<main class="container">
+<section class="panel filters-panel">
+<h2>Filters</h2>
+<div class="filters-grid">
+<div class="field">
+<label for="fKeyword">Keyword Search</label>
+<input type="text" id="fKeyword" placeholder="Search by title, description, or tender no">
+</div>
+<div class="field">
+<label for="fTenderNo">Tender Number</label>
+<input type="text" id="fTenderNo" placeholder="e.g., TND00000000001E">
+</div>
+<div class="field">
+<label for="fClosingDate">Closing Date</label>
+<input type="date" id="fClosingDate">
+</div>
+<div class="field">
+<label for="fType">Tender Type</label>
+<select id="fType"><option value="">All Types</option></select>
+</div>
+<div class="field">
+<label for="fCategory">Category</label>
+<select id="fCategory"><option value="">All Categories</option></select>
+</div>
+<div class="field">
+<label for="fSector">Sector</label>
+<select id="fSector"><option value="">All Sectors</option></select>
+</div>
+<div class="field">
+<label for="fNature">Nature</label>
+<select id="fNature">
+<option value="">All</option>
+<option value="Local">Local</option>
+<option value="Foreign">Foreign</option>
+</select>
+</div>
+<div class="field">
+<label for="fOrg">Organization</label>
+<select id="fOrg"><option value="">All Organizations</option></select>
+</div>
+<div class="field">
+<label for="fCountry">Country</label>
+<select id="fCountry"><option value="Pakistan">Pakistan</option></select>
+</div>
+<div class="field">
+<label for="fDateFrom">Advertise Date From</label>
+<input type="date" id="fDateFrom">
+</div>
+<div class="field">
+<label for="fDateTo">Advertise Date To</label>
+<input type="date" id="fDateTo">
+</div>
+<div class="field">
+<label for="fStatus">Status</label>
+<select id="fStatus">
+<option value="">All</option>
+<option value="Published">Published</option>
+<option value="Closed">Closed</option>
+<option value="Corrigendum">Corrigendum</option>
+</select>
+</div>
+<div class="field">
+<label for="fCity">City</label>
+<input type="text" id="fCity" placeholder="e.g., Lahore">
+</div>
+</div>
+<div class="filters-actions">
+<button id="resetBtn" class="btn btn-neutral">Reset</button>
+<button id="applyBtn" class="btn btn-accent">Apply Filters</button>
+</div>
+</section>
+
+<section class="summary-bar">
+<span id="summaryText">Showing 0 of 0 tenders</span>
+<span id="pageText">Page 1 of 1</span>
+</section>
+
+<section class="panel">
+<h2>Tender Listings</h2>
+<div class="table-wrap">
+<table id="tendersTable">
+<thead>
+<tr>
+<th>SR</th>
+<th>Tender No</th>
+<th>Tender Details</th>
+<th>Organization Details</th>
+<th>Status</th>
+<th>Advertised</th>
+<th>Closing</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="tendersBody"></tbody>
+</table>
+</div>
+<div class="pagination" id="pagination"></div>
+</section>
+</main>
+
+<footer class="site-footer">
+<p>Powered by ITWorks</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
