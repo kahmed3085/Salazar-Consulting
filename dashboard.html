@@ -186,6 +186,7 @@
     max-width: 46ch;
   }
   .hero-sub strong { color: var(--navy); font-weight: 700; }
+  .greeting { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.3rem; color: var(--navy); margin-bottom: 6px; }
 
   .hero-right {
     display: flex; flex-direction: column; gap: 16px;
@@ -382,16 +383,13 @@
 
   <section class="hero">
     <div class="hero-left">
+      <p class="greeting">Hello Salman,</p>
       <div class="eyebrow">New Tenders Published Today</div>
       <div class="hero-count">
         <span id="todayCount">0</span>
         <span class="unit" id="unitText">tenders published today</span>
       </div>
-      <p class="hero-sub">
-        Fresh public-sector opportunities scraped each morning from Pakistan's
-        <strong>PPRA active-tenders portal</strong>, grouped by category so you
-        can scan the day's new business at a glance.
-      </p>
+<p class="hero-sub">These are the live tenders updated as of <strong id="asOfTime">—</strong>. Next update due <strong id="nextUpdateTime">—</strong>.</p>
     </div>
     <div class="hero-right">
       <div class="mini-stats">
@@ -490,6 +488,10 @@
     });
     document.getElementById('refreshText').textContent = 'Refreshed daily \u00b7 auto-updated 9:00 AM PKT';
 
+    document.getElementById('asOfTime').textContent = genDate.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
+    const nextRun = new Date(Date.UTC(genDate.getUTCFullYear(), genDate.getUTCMonth(), genDate.getUTCDate(), 4, 0, 0));
+    if (nextRun <= genDate) { nextRun.setUTCDate(nextRun.getUTCDate() + 1); }
+    document.getElementById('nextUpdateTime').textContent = nextRun.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
     // "Today" = tenders advertised on the generation date (the day's fresh batch).
     const genDay = genDate.toISOString().slice(0, 10);
     let todays = all.filter(t => (t.advertisedDate || '') === genDay);
